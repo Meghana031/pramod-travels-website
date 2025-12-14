@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PRAMOD Travels 24/7</title>
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+    }
+
+    /* Header */
+    header {
+      background-color: #212529;
+      padding: 15px 30px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffc107;
+      user-select: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      padding: 6px 8px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      color: #212529;
+      background: #ffc107;
+    }
+
+    .search-bar input {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+      font-size: 1rem;
+      min-width: 180px;
+    }
+
+    /* Profile below header */
+    .profile {
+      margin: 20px auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #ffc107;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .profile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-upload {
+      margin: 10px auto 30px;
+      text-align: center;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      color: #333;
+      user-select: text;
+    }
+    .contact-info :Contact{
+        font-weight: bold;
+    }
+
+    /* Sections */
+    section {
+      margin: 30px 20px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 15px;
+      user-select: none;
+    }
+    .car-card p {
+        font-weight: bold;
+    }
+    .cars-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 20px;
+    }
+
+    .car-card {
+      background-color: #f4f4f4;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .car-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: black;
+      text-align: center;
+    }
+
+    .car-photo {
+      width: 100%;
+      max-width: 250px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background: #ddd;
+    }
+
+    .car-upload {
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .car-card p {
+      margin-bottom: 15px;
+      color: #555;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .book-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .book-now {
+      background-color: #ffc107;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      user-select: none;
+      width: 100%;
+      max-width: 160px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .book-now:hover {
+      background-color: #e0a800;
+    }
+
+    .contact-number {
+      display: none;
+      position: absolute;
+      top: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      user-select: text;
+      z-index: 10;
+      width: max-content;
+      max-width: 250px;
+      word-wrap: break-word;
+    }
+
+    .book-container:hover .contact-number {
+      display: block;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+      }
+
+      nav a {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+      }
+
+      .search-bar input {
+        width: 100%;
+        font-size: 1rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .cars-container {
+        grid-template-columns: 1fr;
+      }
+
+      .car-card {
+        padding: 15px;
+      }
+
+      .book-now {
+        max-width: 100%;
+      }
+
+      .contact-number {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .profile {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">PRAMOD Travels 24/7</div>
+    <nav>
+      <a href="#rent">Rent for Ride</a>
+      <a href="#trips">Long Trips</a>
+      <a href="#daily">Daily Service</a>
+      <a href="#parcels">Parcels Charge</a>
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+      </div>
+    </nav>
+  </header>
+
+  <!-- Profile Section with upload -->
+  <div class="profile">
+    <img id="profile-img" src="images/profile (2).jpeg" alt="Profile Photo" />
+  </div>
+  <div class="contact-info">
+    📞   <strong>Contact :</strong> +91 9347456550,+91 9573942666 
+    </br>
+       <strong>Address : </strong>1-13,Prakash Nagar,Bhogapuram,Eluru
+  </div>
+
+  <!-- Sections -->
+
+  <section id="rent">
+    <h2>Rent for Ride</h2>
+    <div class="cars-container">
+      <div class="car-card">
+        <h3>Swift Dzire</h3>
+        <img class="car-photo" src="images/Dzire.jpeg" alt="Swift Dzire" />
+        
+        <p>₹20/km | AC | 5 Seater
+            </br>
+             </br>
+           <strong style="color: red;">Rent : 2500₹</strong>
+            </br>
+             </br>
+            Seater: 5
+            </br>
+             </br>
+            Car consists :AC
+            </br>
+             </br>
+            Rent is only 200 km/day
+            </br>
+            </br>
+            </br>
+
+            Driving is not just a destination,it’s an adventure
+            </br>
+            
+            Drive Safe be Safe
+        </p>
+        <div class="book-container">
+          <button class="book-now">Book Now</button>
+          <div class="contact-number">📞+91 9347456550,+91 9573942666 </div>
+        </div>
+      </div>
+      <div class="car-card">
+        <h3>Etios Liva</h3>
+        <img class="car-photo" src="images/etios liva.jpeg" alt=">Etios Liva" />
+        
+        <p>₹18/km | AC | 5 Seater | Comfortable
+        </br>
+         </br>
+         <strong style="color: red;">Rent : 2000₹</strong>
+        </br>
+         </br>
+        Seater: 5
+        </br>
+         </br>
+        Car consists :AC
+        </br>
+         </br>
+        Rent is only 200 km/day
+        </br>
+         </br>
+          </br>
+        Driving is not just a destination, it’s an adventure
+        </br>
+        Drive Safe be Safe
+
+        </p>
+        <div class="book-container">
+          <button class="book-now">Book Now</button>
+          <div class="contact-number">📞+91 9347456550,+91 9573942666 </div>
+        </div>
+      </div>
+      <div class="car-card">
+        <h3>Tavera</h3>
+        <img class="car-photo" src="images/tavera 2.jpeg" alt="Tavera" />
+        <img class="car-photo" src="images/tavera 3.jpeg" alt="Tavera" />
+        
+        
+        <p>₹25/km | AC | 10 Seater | Comfortable
+
+        </br>
+         </br>
+         <strong style="color: red;">Rent : 3500₹</strong>
+        </br>
+         </br>
+        Seater: 10
+        </br>
+         </br>
+        Car consists :AC
+        </br>
+         </br>
+        Rent is only 200 km/day
+        </br>
+         </br>
+          
+        Driving is not just a destination, it’s an adventure
+        </br>
+        Drive Safe be Safe
+
+        </p>
+        <div class="book-container">
+          <button class="book-now">Book Now</button>
+          <div class="contact-number">📞+91 9347456550,+91 9573942666 </div>
+        </div>
+      </div>
+      <div class="car-card">
+        <h3>Chevrolet Enjoy</h3>
+        <img class="car-photo" src="images/Chevrolet enjoy.jpeg" alt="Chevrolet Enjoy" />
+        
+        <p>₹20/km | AC | 8 Seater | Fuel Efficient
+
+        </br>
+         </br>
+        <strong style="color: red;">Rent : 3000₹</strong>
+        </br>
+         </br>
+        Seater: 8
+        </br>
+         </br>
+        Car consists :AC
+        </br>
+         </br>
+        Rent is only 200 km/day
+        </br>
+         </br>
+          </br>
+          
+        Driving is not just a destination, it’s an adventure
+        </br>
+        Drive Safe be Safe
+        </p>
+        <div class="book-container">
+          <button class="book-now">Book Now</button>
+          <div class="contact-number">📞+91 9347456550,+91 9573942666 </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trips">
+    <h2>Long Trips</h2>
+    <div class="cars-container">
+      <div class="car-card">
+        <h3>Swift Dzire</h3>
+        <img class="car-photo" src="images/Dzire.jpeg" alt="Swift Dzire" />
+        
+        <p>₹20/km | AC | 5 Seater | Spacious
+        </br>
+         </br>
+         <strong style="color: red;">Charge for long trips:</strong>  <strong style="color: black;">based on location</strong>
+        </br>
+         </br>
+        Seater: 5
+        </br>
+         </br>
+        Car consists :AC
+        </br>
+         </br>
+        
+        </br>
+        Driving is not just a destination, it’s an adventure
+        </br>
+        Drive Safe be Safe
+
+        </p>
+        <div class="book-container">
+          <button class="book-now">Book Now</button>
+          <div class="contact-number">📞+91 9347456550,+91 95739426660 </div>
+        </div>
+      </div>
+      <div class="car-card">
+        <h3>Etios Liva</h3>
+        <img class="car-photo" src="images/etios liva.jpeg" alt="Etios Liva" />
+        
+        <p>₹18/km | AC | 5 Seater | Luxury 
+        </br>
+         </br>
+        <strong style="color: red;">Charge for long trips:</strong>  <strong style="color: black;">based on location</strong>
+        </br>
+         </br>
+        Seater: 5
+        </br>
+         </br>
+        Car consists :AC
+        </br>
+         </br>
+          </br>
+        Driving is not just a destination, it’s an adventure
+        </br>
+        
+        Drive Safe be Safe
+
+
+        </p>
+        <div class="book-container">
+          <button class="book-now">Book Now</button>
+          <div class="contact-number">📞+91 9347456550,+91 9573942666 </div>
+        </div>
+      </div>
+      <div class="car-card">
+        <h3>Tavera</h3>
+        <img class="car-photo" src="images/tavera 2.jpeg" alt="Tavera" />
+        <img class="car-photo" src="images/tavera 3.jpeg" alt="Tavera" />
+        
+        <p>₹25/km | AC | 10 Seater | Comfortable
+        </br>
+         </br>
+        <strong style="color: red;">Charge for long trips:</strong>  <strong style="color: black;">based on location</strong>
+        </br>
+         </br>
+        Seater: 10
+        </br>
+         </br>
+        Car consists :AC
+        </br>
+         </br>
+          </br>
+       
+       
+        Driving is not just a destination, it’s an adventure
+        </br>
+        Drive Safe be Safe
+
+        </p>
+        <div class="book-container">
+          <button class="book-now">Book Now</button>
+          <div class="contact-number">📞+91 9347456550,+91 9573942666 </div>
+        </div>
+      </div>
+      <div class="car-card">
+        <h3>Chevrolet Enjoy</h3>
+        <img class="car-photo" src="images/Chevrolet enjoy.jpeg" alt="Chevrolet Enjoy" />
+        
+        <p>₹20/km | AC | 8 Seater | Powerful
+        </br>
+         </br>
+         <strong style="color: red;">Charge for long trips:</strong>  <strong style="color: black;">based on location</strong>
+        </br>
+         </br>
+        Seater: 8
+        </br>
+         </br>
+        Car consists :AC
+         </br>
+        
+        </br>
+         </br>
+        Driving is not just a destination, it’s an adventure
+        </br>
+        Drive Safe be Safe
+
+        </p>
+        <div class="book-container">
+          <button class="book-now">Book Now</button>
+          <div class="contact-number">📞+91 9347456550,+91 9573942666 </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="daily">
+    <h2>Daily Service</h2>
+    <div class="cars-container">
+      <div class="car-card">
+        <h3>Tavera</h3>
+        <img class="car-photo" src="images/tavera 2.jpeg" alt="Tavera" />
+        <img class="car-photo" src="images/tavera 3.jpeg" alt="Tavera" />
+        
+        <p>₹25/km | AC | 10 Seater | Comfortable
+        </br>
+        </br>
+        <strong style="color: red;">Daily Service : </strong>  <strong style="color: black;">150₹ / Person - Eluru to Vijayawada</strong>
+        </br>
+         </br>
+        Seater: 10
+        </br>
+         </br>
+        Car consists :AC
+        </br>
+         </br>
+       
+        </br>
+        Driving is not just a destination, it’s an adventure
+        </br>
+        Drive Safe be Safe
+
+        </p>
+        <div class="book-container">
+          <button class="book-now">Book Now</button>
+          <div class="contact-number">📞+91 9347456550,+91 9573942666 </div>
+        </div>
+      </div>
+      <div class="car-card">
+        <h3>Chevrolet Enjoy</h3>
+        <img class="car-photo" src="images/Chevrolet enjoy.jpeg" alt="Chevrolet Enjoy" />
+         <p>₹20/km | AC | 8 Seater | Comfortable
+             
+         </br>
+        </br>
+        <strong style="color: red;">Daily Service : </strong>  <strong style="color: black;">150₹ / Person - Eluru to Vijayawada</strong>
+
+        </br>
+        </br>
+        Seater: 8
+        </br>
+        </br>
+        Car consists :AC
+        </br>
+        </br>         
+       
+        </br>
+        Driving is not just a destination, it’s an adventure
+        </br>
+ Drive Safe be Safe
+</p>
+
+        <div class="book-container">
+          <button class="book-now">Book Now</button>
+          <div class="contact-number">📞+91 9347456550,+91 9573942666</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="parcels">
+    <h2>Parcels Charge</h2>
+    <div class="cars-container">
+      <div class="car-card">
+        <h3>Tavera</h3>
+        <img class="car-photo" src="images/tavera 2.jpeg" alt="Tavera" />
+        <img class="car-photo" src="images/tavera 3.jpeg" alt="Tavera" />
+        <p>
+        <strong style="color: red;">Charge for Parcels : </strong>  <strong style="color: black;">100₹/Parcel</strong>
+       </br>
+       
+       
+       
+       
+        </p>
+        <div class="book-container">
+  <button class="book-now">Book Now</button>
+  <div class="contact-number">📞+91 9347456550,+91 9573942666</div>
+</div>
+    </div>
+  </section>
+
+  <script>
+    // Profile photo upload
+    const uploadInput = document.getElementById('upload-photo');
+    const profileImg = document.getElementById('profile-img');
+
+    uploadInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          profileImg.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Car photo uploads for all car cards
+    document.querySelectorAll('.car-upload').forEach(input => {
+      input.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            // Find sibling img element in the same card
+            const carCard = this.closest('.car-card');
+            const img = carCard.querySelector('.car-photo');
+            img.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
